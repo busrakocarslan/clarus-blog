@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Post from "../components/Post";
+import PaginationCom from "../components/Pagination";
+// import { Pagination } from "react-bootstrap";
+
+function Home() {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1); // sayfaları ayaralıyorum, default olarak 1.sayfayı seçiyorum.
+  const [postperPage, setPostPerPage] = useState(10); // sayfa başına gelecek veri sayısını ayarlıyorum.
+  useEffect(() => {
+    const getPosts = async () => {
+      setLoading(true);
+      const res = await axios("https://jsonplaceholder.typicode.com/posts");
+      setPosts(res.data);
+      setLoading(false); //loadingi kapatıyoruz
+    };
+    getPosts(); //invoke
+    console.log(posts);
+  }, []);
+  const indexOfLastPost = currentPage * postperPage;
+  const indexOfFirstPost = indexOfLastPost - postperPage;
+  const currentPost = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  return (
+    <div className="container mt-5 ">
+      <Post posts={currentPost} loading={loading} />
+      <PaginationCom postperPage={postperPage} posts={posts} />
+      
+    </div>
+  );
+}
+
+export default Home;
