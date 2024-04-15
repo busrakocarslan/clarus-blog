@@ -1,5 +1,6 @@
-## https://reactrouter-proje-kcrsln.netlify.app/ <br>
+## https://blog-kcrsln.netlify.app/ <br>
 
 ## My project where I use the pagination system by pulling data from the API with React <br>
 
-## https://blog-kcrsln.netlify.app/ <br>
+## <img src="./public/blog-gif.gif">
+
