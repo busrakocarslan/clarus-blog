@@ -36,7 +36,7 @@ function Home() {
   return (
     <div className="container mt-5 ">
       <Header/>
-      <PaginationCom postperPage={postperPage} posts={posts} handlePage={handlePage}/>
+      <PaginationCom postperPage={postperPage} posts={posts} handlePage={handlePage} currentPage={currentPage} />
       <Post posts={currentPost} loading={loading} handleClean={handleClean}/>
       
     </div>
